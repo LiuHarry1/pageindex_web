@@ -1,3 +1,6 @@
+# Build from the repository root (pageindex lives next to web/, not inside web/backend):
+#   docker build -f web/backend/Dockerfile .
+
 FROM python:3.11-slim
 
 WORKDIR /app
@@ -6,11 +9,11 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc libffi-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY web/backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY pageindex/ /app/pageindex/
-COPY app/ /app/app/
+COPY web/backend/app/ /app/app/
 
 RUN mkdir -p /app/uploads /app/workspace
 
