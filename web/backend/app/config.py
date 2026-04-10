@@ -4,8 +4,26 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = BASE_DIR.parent.parent
 
-UPLOAD_DIR = BASE_DIR / "uploads"
-WORKSPACE_DIR = BASE_DIR / "workspace"
+
+def _resolve_storage_dir(env_path: str | None, *, under_root: str) -> Path:
+    """Pick upload/workspace directory: explicit env > STORAGE_ROOT subdir > BASE_DIR subdir."""
+    if env_path:
+        p = Path(env_path).expanduser()
+        return p.resolve() if p.is_absolute() else (BASE_DIR / p).resolve()
+    root = os.getenv("PAGEINDEX_STORAGE_ROOT")
+    if root:
+        return (Path(root).expanduser().resolve() / under_root)
+    return (BASE_DIR / under_root).resolve()
+
+
+UPLOAD_DIR = _resolve_storage_dir(
+    os.getenv("PAGEINDEX_UPLOAD_DIR"),
+    under_root="uploads",
+)
+WORKSPACE_DIR = _resolve_storage_dir(
+    os.getenv("PAGEINDEX_WORKSPACE_DIR"),
+    under_root="workspace",
+)
 
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 WORKSPACE_DIR.mkdir(parents=True, exist_ok=True)

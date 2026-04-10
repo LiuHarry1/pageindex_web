@@ -15,7 +15,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY pageindex/ /app/pageindex/
 COPY web/backend/app/ /app/app/
 
-RUN mkdir -p /app/uploads /app/workspace
+# Persist uploads + index JSON on the host: mount one directory here, e.g.
+#   docker run -v /your/path/pageindex-data:/data ...
+ENV PAGEINDEX_STORAGE_ROOT=/data
+RUN mkdir -p /data/uploads /data/workspace
 
 ENV PYTHONUNBUFFERED=1
 
