@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useNavigate } from 'react-router-dom'
-import { Upload, FileUp, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import {  FileUp, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { uploadDocument } from '../api/client'
 
 export default function FileUpload() {

@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
-import { FileText, Upload, MessageSquare } from 'lucide-react'
+import { FileText, Upload } from 'lucide-react'
 import DocumentList from './components/DocumentList'
 import FileUpload from './components/FileUpload'
 import ChatPanel from './components/ChatPanel'
