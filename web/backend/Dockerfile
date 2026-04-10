@@ -6,11 +6,11 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc libffi-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY web/backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY pageindex/ /app/pageindex/
-COPY web/backend/app/ /app/app/
+COPY app/ /app/app/
 
 RUN mkdir -p /app/uploads /app/workspace
 
