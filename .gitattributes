@@ -1,1 +1,5 @@
 *.ipynb linguist-vendored
+
+# Docker parses RUN with the shell; CRLF line endings make commands like "npm ci" become "npm ci\r" and npm prints help then exits 1.
+**/Dockerfile text eol=lf
+.dockerignore text eol=lf
