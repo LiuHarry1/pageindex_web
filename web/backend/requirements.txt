@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy[asyncio]
+aiomysql
+openai
+litellm
+pymupdf
+PyPDF2
+python-dotenv
+pyyaml

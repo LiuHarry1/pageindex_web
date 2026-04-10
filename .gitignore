@@ -4,3 +4,8 @@ __pycache__
 .env*
 .venv/
 logs/
+
+web/backend/workspace/
+web/backend/uploads/
+web/frontend/node_modules/
+web/frontend/dist/
