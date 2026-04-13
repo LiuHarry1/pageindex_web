@@ -13,6 +13,7 @@ import {
 import ReactMarkdown from 'react-markdown'
 import { getDocument, chatWithDocument } from '../api/client'
 import type { ChatMessage, ChunkItem } from '../types'
+import { randomId } from '../utils/id'
 
 function ChunkCard({ chunk, index }: { chunk: ChunkItem; index: number }) {
   const [expanded, setExpanded] = useState(false)
@@ -97,12 +98,12 @@ export default function ChatPanel() {
     if (!question || loading || !docId) return
 
     const userMsg: ChatMessage = {
-      id: crypto.randomUUID(),
+      id: randomId(),
       role: 'user',
       content: question,
     }
     const loadingMsg: ChatMessage = {
-      id: crypto.randomUUID(),
+      id: randomId(),
       role: 'assistant',
       content: '',
       loading: true,

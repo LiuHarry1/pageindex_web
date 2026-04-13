@@ -4,7 +4,7 @@
 # Use bookworm (glibc): Vite 8 / LightningCSS prebuilds are reliable on linux/amd64+arm64.
 # If this file is saved with CRLF on Windows, RUN lines break (npm sees "ci\r"); keep LF — see .gitattributes.
 
-FROM node:22-bookworm-slim AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
